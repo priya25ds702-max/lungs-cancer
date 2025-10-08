@@ -1,86 +1,148 @@
-# lungs-cancer
-🚀 Project Pulse 📊
-✨ The Modern Analytics & Tagging Bridge ✨
-🌟 Overview
-Welcome to Project Pulse! This is the lightweight, lightning-fast solution you've been searching for to seamlessly manage data collection, tracking, and web tagging. Built on robust Google technologies  and designed for the modern web, Pulse ensures your analytics are always accurate, efficient, and never miss a beat!
+🫁 Lung Cancer Prediction using Support Vector Machine (SVM)
+
+📘 Overview
+
+This project aims to predict the likelihood of lung cancer based on patient lifestyle and medical attributes using a Support Vector Machine (SVM) model. The dataset includes multiple factors such as smoking habits, fatigue, anxiety, chronic disease, and more.
+
+📂 Dataset Information
+
+The dataset used is survey lung cancer.csv, which contains 309 samples and 16 columns.
+Each record represents a patient with several health and lifestyle features.
+
+🧾 Columns:
+
+GENDER 🧍‍♂️🧍‍♀️
+
+AGE 🎂
+
+SMOKING 🚬
+
+YELLOW_FINGERS 💛
+
+ANXIETY 😰
+
+PEER_PRESSURE 👥
+
+CHRONIC DISEASE 🧬
+
+FATIGUE 😴
+
+ALLERGY 🤧
+
+WHEEZING 😮‍💨
+
+ALCOHOL CONSUMING 🍷
+
+COUGHING 🤧
+
+SHORTNESS OF BREATH 🫤
+
+SWALLOWING DIFFICULTY 😣
+
+CHEST PAIN ❤️‍🔥
+
+LUNG_CANCER 🎯 (Target Variable)
+
+⚙️ Steps Involved
+1️⃣ Data Loading
+import pandas as pd
+df = pd.read_csv('survey lung cancer.csv')
+
+2️⃣ Data Exploration
+
+Checked for null values
+
+Displayed dataset info and description
+
+Visualized data using seaborn and matplotlib
+
+3️⃣ Label Encoding
+
+Categorical variables like GENDER and LUNG_CANCER were converted to numerical form using:
+
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+df['GENDER'] = le.fit_transform(df['GENDER'])
+df['LUNG_CANCER'] = le.fit_transform(df['LUNG_CANCER'])
+
+4️⃣ Train-Test Split
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+
+5️⃣ Feature Scaling
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+x_train = sc.fit_transform(x_train)
+x_test = sc.transform(x_test)
+
+6️⃣ Model Training (SVM)
+from sklearn.svm import SVC
+model = SVC()
+model.fit(x_train, y_train)
+
+7️⃣ Model Evaluation
+model.score(x_train, y_train)*100, model.score(x_test, y_test)*100
 
 
+✅ Training Accuracy: ~94.7%
+✅ Testing Accuracy: ~93.5%
 
-💡 Key Features
+🔢 Confusion Matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
 
-⚡ Blazing Fast: Minimized script size for ultimate page speed. Load quickly and capture every user interaction.
+📊 Visualizations
 
+The project includes:
 
-🔒 Secure & Private: Includes built-in support for consent management and user opt-out controls.
+Histograms for age and cancer distribution
 
+Bar plots for categorical feature analysis
 
-🔗 Link Decorator Magic: Automatically handles cross-domain linking and cookie decoration on anchor tags and forms.
+Heatmap for correlation matrix
 
+💡 Insights
 
-🧩 Easy Integration: Simple setup with the flexibility to work with any major tag manager or platform.
+Most patients in the dataset are older adults (50–80 years).
 
+Smoking, anxiety, and fatigue show strong correlations with lung cancer.
 
-🧰 Developer Friendly: Clean API for registering containers and destinations directly in your application logic.
+The SVM model performs exceptionally well with minimal overfitting.
 
-🛠️ Installation
-Get up and running in a jiffy!
+🧠 Technologies Used
 
-Via npm (Recommended)
-Bash
+Python 🐍
 
-npm install project-pulse
-# or
-yarn add project-pulse
-Direct Script Tag
-For the fastest integration, simply drop this tag into the <head> of your HTML:
+Pandas, NumPy
 
-HTML
+Matplotlib, Seaborn
 
-<script async src="path/to/analytics.js"></script>
-📖 Usage
-Initializing the Pulse Tracker
-Once the script is loaded, you can access the powerful bridge functions (google_tag_data.glBridge) to manage your tracking!
+Scikit-learn
 
-JavaScript
+🚀 How to Run
 
-// Register a custom function to run on every link click/form submission
-google_tag_data.glBridge.auto(
-  function() {
-    return { 'client_id': '12345' };
-  }, 
-  ['example.com', 'mydomain.net'], 
-  'query', 
-  true
-);
+Clone this repository or upload the notebook to Google Colab.
 
-// Get any decorated parameters from the URL
-const params = google_tag_data.glBridge.get(true); 
-console.log('Pulse Parameters:', params);
-🤝 Contributing
-We ❤️ contributions! Whether it's a new feature, a bug fix, or documentation improvements, we welcome your help.
+Upload the dataset survey lung cancer.csv.
 
-🍴 Fork this repository.
+Run all cells sequentially.
 
-👯 Clone your fork.
+View the output metrics and visualizations.
 
-💡 Create a new feature branch (git checkout -b feature/awesome-new-thing).
+🏁 Results Summary
+Metric	Training	Testing
+Accuracy	94.73%	93.55%
+🧩 Future Improvements
 
-✍️ Commit your changes (git commit -m 'feat: added awesome new thing').
+Experiment with other models like Random Forest or Logistic Regression.
 
-⬆️ Push to the branch (git push origin feature/awesome-new-thing).
+Apply hyperparameter tuning for better accuracy.
 
-📬 Open a Pull Request!
+Add ROC-AUC and precision-recall metrics for deeper evaluation.
 
-⚖️ License
-This project is licensed under the Apache 2.0 License. See the LICENSE file for details.
+👨‍💻 Author
 
-Made with 💖 by your amazing development team!
-
-
-
-
-
-
-
-
-
+Project by: PRIYA KUMARI
+📅 DATE :- 08/10/2025
+🔗 Built and tested on Google Colab
